@@ -29,3 +29,5 @@ private
 bibliography.bib
 revtex-bibliography-diffNotes.bib
 
+# PAR:Packer builds
+build
