@@ -38,7 +38,7 @@ BIN="$PWD/$OUT_DIR/latexdiff${EXEEXT}"
   cd "$WORK_DIR"
   printf '\\documentclass{article}\n\\begin{document}\nHello\n\\end{document}\n' > a.tex
   printf '\\documentclass{article}\n\\begin{document}\nHello world\n\\end{document}\n' > b.tex
-  "$BIN" a.tex b.tex > diff.tex
+  "$BIN" a.tex b.tex > diff.tex 2>/dev/null
   grep -q 'DIFadd' diff.tex || { echo "Smoke test failed: no DIFadd in output" >&2; exit 1; }
 )
 echo "Smoke test passed"
