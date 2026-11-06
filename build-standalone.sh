@@ -8,6 +8,17 @@ case "$(uname -s)" in
   *)                    EXEEXT="" ;;
 esac
 
+# Windows (Git Bash): make sure Strawberry Perl comes before Git's bundled Perl.
+if [ "$EXEEXT" = ".exe" ] && [ -d /c/Strawberry ]; then
+  export PATH="/c/Strawberry/perl/bin:/c/Strawberry/perl/site/bin:/c/Strawberry/c/bin:$PATH"
+fi
+
+# Install PAR::Packer if it isn't available yet.
+if ! command -v pp >/dev/null 2>&1; then
+  mkdir -p "${PERL_CPANM_HOME:-$HOME/.cpanm}"
+  cpanm --notest PAR::Packer
+fi
+
 OUT_DIR="build"
 WORK_DIR="$(mktemp -d)"
 trap 'rm -rf "$WORK_DIR"' EXIT
