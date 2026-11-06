@@ -29,3 +29,5 @@ Linux (x86_64, aarch64), macOS (Intel, Apple Silicon), Windows (x86_64).
 - These builds track stable upstream releases only.
 - `latexdiff` uses `kpsewhich` to check which LaTeX packages are installed. If you don't have it (likely if you use Tectonic), you'll see a harmless warning, and some optional features, like mark-up inside verbatim environments, are turned off. The diff itself works normally.
 - This repo is a thin packaging layer. The `latexdiff` source is upstream's, unmodified. Bugs in `latexdiff` itself belong [upstream](https://github.com/ftilmann/latexdiff/issues).
+
+Upstream README: https://github.com/hethon/latexdiff-bin/blob/master/README.md
