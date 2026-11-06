@@ -49,6 +49,7 @@ jobs:
 
       - uses: actions/upload-artifact@v7.0.2
         with:
+          name: ${{ steps.package.outputs.asset }}
           path: ${{ steps.package.outputs.asset }}
 
   release:
