@@ -13,8 +13,9 @@ if [ "$EXEEXT" = ".exe" ] && [ -d /c/Strawberry ]; then
   export PATH="/c/Strawberry/perl/bin:/c/Strawberry/perl/site/bin:/c/Strawberry/c/bin:$PATH"
 fi
 
-# Install PAR::Packer if it isn't available yet.
-if ! command -v pp >/dev/null 2>&1; then
+# Install PAR::Packer for the *active* perl if it isn't available yet.
+# (Don't test for `pp` on PATH: macOS ships a /usr/bin/pp tied to the system perl.)
+if ! perl -MPAR::Packer -e1 >/dev/null 2>&1; then
   mkdir -p "${PERL_CPANM_HOME:-$HOME/.cpanm}"
   cpanm --notest PAR::Packer
 fi
