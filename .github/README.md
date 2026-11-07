@@ -26,8 +26,12 @@ Linux (x86_64, aarch64), macOS (Intel, Apple Silicon), Windows (x86_64).
 
 ## Notes
 
-- These builds track upstream releases starting from version 1.4.0.
 - The generated diff file always loads `listings`, so changes inside verbatim environments are shown. Compiling the diff file requires `listings` to be available (Tectonic fetches it automatically).
 - This repo is a thin packaging layer. The `latexdiff` source is upstream's, unmodified. Bugs in `latexdiff` itself belong [upstream](https://github.com/ftilmann/latexdiff/issues).
+
+## Versioning
+
+- These builds track upstream releases starting from version 1.4.0.
+- Release tags follow upstream's version. A tag like `v1.4.0-1` is the second packaging revision of upstream `1.4.0`: the `latexdiff` source is the same, and only the build or packaging changed. Use the highest revision for a given version.
 
 Upstream README: https://github.com/hethon/latexdiff-bin/blob/master/README.md
