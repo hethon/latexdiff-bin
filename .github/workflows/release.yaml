@@ -29,7 +29,10 @@ jobs:
         run: |
           VERSION=$(grep '^VERSION=' Makefile | cut -d= -f2)
           echo "Makefile: $VERSION, tag: $GITHUB_REF_NAME"
-          test "v$VERSION" = "$GITHUB_REF_NAME"
+          case "$GITHUB_REF_NAME" in
+            "v$VERSION" | "v$VERSION"-*) ;;
+            *) echo "Tag does not match Makefile version" >&2; exit 1 ;;
+          esac
 
       - uses: shogo82148/actions-setup-perl@v1.44.4
         with:
