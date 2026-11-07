@@ -24,19 +24,19 @@ has_local 2>/dev/null || alias local=typeset
 set -u
 
 APP_NAME="latexdiff"
-APP_VERSION="1.4.0"
+APP_VERSION="1.4.0-1"
 if [ -n "${LATEXDIFF_DOWNLOAD_URL:-}" ]; then
     ARTIFACT_DOWNLOAD_URLS="$LATEXDIFF_DOWNLOAD_URL"
 elif [ -n "${INSTALLER_DOWNLOAD_URL:-}" ]; then
     ARTIFACT_DOWNLOAD_URLS="$INSTALLER_DOWNLOAD_URL"
 elif [ -n "${LATEXDIFF_INSTALLER_GHE_BASE_URL:-}" ]; then
     INSTALLER_BASE_URL="$LATEXDIFF_INSTALLER_GHE_BASE_URL"
-    ARTIFACT_DOWNLOAD_URLS="${INSTALLER_BASE_URL}/hethon/latexdiff-bin/releases/download/v1.4.0"
+    ARTIFACT_DOWNLOAD_URLS="${INSTALLER_BASE_URL}/hethon/latexdiff-bin/releases/download/v1.4.0-1"
 elif [ -n "${LATEXDIFF_INSTALLER_GITHUB_BASE_URL:-}" ]; then
     INSTALLER_BASE_URL="$LATEXDIFF_INSTALLER_GITHUB_BASE_URL"
-    ARTIFACT_DOWNLOAD_URLS="${INSTALLER_BASE_URL}/hethon/latexdiff-bin/releases/download/v1.4.0"
+    ARTIFACT_DOWNLOAD_URLS="${INSTALLER_BASE_URL}/hethon/latexdiff-bin/releases/download/v1.4.0-1"
 else
-    ARTIFACT_DOWNLOAD_URLS="https://github.com/hethon/latexdiff-bin/releases/download/v1.4.0"
+    ARTIFACT_DOWNLOAD_URLS="https://github.com/hethon/latexdiff-bin/releases/download/v1.4.0-1"
 fi
 if [ -n "${LATEXDIFF_PRINT_VERBOSE:-}" ]; then
     PRINT_VERBOSE="$LATEXDIFF_PRINT_VERBOSE"
@@ -66,7 +66,7 @@ fi
 AUTH_TOKEN="${LATEXDIFF_GITHUB_TOKEN:-}"
 
 read -r RECEIPT <<EORECEIPT
-{"binaries":["CARGO_DIST_BINS"],"binary_aliases":{},"cdylibs":["CARGO_DIST_DYLIBS"],"cstaticlibs":["CARGO_DIST_STATICLIBS"],"install_layout":"unspecified","install_prefix":"AXO_INSTALL_PREFIX","modify_path":true,"provider":{"source":"ingen","version":"0.4.0"},"source":{"app_name":"latexdiff","name":"latexdiff-bin","owner":"hethon","release_type":"github"},"version":"1.4.0"}
+{"binaries":["CARGO_DIST_BINS"],"binary_aliases":{},"cdylibs":["CARGO_DIST_DYLIBS"],"cstaticlibs":["CARGO_DIST_STATICLIBS"],"install_layout":"unspecified","install_prefix":"AXO_INSTALL_PREFIX","modify_path":true,"provider":{"source":"ingen","version":"0.4.0"},"source":{"app_name":"latexdiff","name":"latexdiff-bin","owner":"hethon","release_type":"github"},"version":"1.4.0-1"}
 EORECEIPT
 
 # Some Linux distributions don't set HOME
@@ -120,10 +120,10 @@ usage() {
     cat <<EOF
 latexdiff-installer.sh
 
-The installer for latexdiff 1.4.0
+The installer for latexdiff 1.4.0-1
 
 This script detects what platform you're on and fetches an appropriate archive from
-https://github.com/hethon/latexdiff-bin/releases/download/v1.4.0
+https://github.com/hethon/latexdiff-bin/releases/download/v1.4.0-1
 then unpacks the binaries and installs them to
 
     \$HOME/.local/bin
@@ -223,12 +223,12 @@ download_binary_and_run_installer() {
 
     # destructure selected archive info into locals
     case "$_artifact_name" in 
-        "latexdiff-v1.4.0-aarch64-apple-darwin.tar.gz")
+        "latexdiff-v1.4.0-1-aarch64-apple-darwin.tar.gz")
             _arch="aarch64-apple-darwin"
             _zip_ext=".tar.gz"
             _zip_depth="0"
             _checksum_style="sha256"
-            _checksum_value="aa6c3334d71b4b9fefef3aeee8ad5ad5dac6b3c80cbaaa6c7b0d1d620320a6cb"
+            _checksum_value="f472e63612a8c6f0857ac1ffe9db95c7d585d83320e288f96efeb221c58dac4f"
             _bins="latexdiff"
             _bins_js_array='"latexdiff"'
             _libs=""
@@ -238,12 +238,12 @@ download_binary_and_run_installer() {
             _updater_name=""
             _updater_bin=""
             ;;
-        "latexdiff-v1.4.0-aarch64-unknown-linux-gnu.tar.gz")
+        "latexdiff-v1.4.0-1-aarch64-unknown-linux-gnu.tar.gz")
             _arch="aarch64-unknown-linux-gnu"
             _zip_ext=".tar.gz"
             _zip_depth="0"
             _checksum_style="sha256"
-            _checksum_value="fd52e477765b5c73f37c3f314150c4c8686de364aa0cdfdb638657d9290d979a"
+            _checksum_value="103e1438d5424e6c258429d2966493cb6c85475160792bfc7f17c83d44c3d141"
             _bins="latexdiff"
             _bins_js_array='"latexdiff"'
             _libs=""
@@ -253,12 +253,12 @@ download_binary_and_run_installer() {
             _updater_name=""
             _updater_bin=""
             ;;
-        "latexdiff-v1.4.0-x86_64-apple-darwin.tar.gz")
+        "latexdiff-v1.4.0-1-x86_64-apple-darwin.tar.gz")
             _arch="x86_64-apple-darwin"
             _zip_ext=".tar.gz"
             _zip_depth="0"
             _checksum_style="sha256"
-            _checksum_value="6aca46dbeaf6cd514e95f34019734c461eb2b88d9a7201d725d71efaae7e291e"
+            _checksum_value="e6c337d0b752b02ed439bea992b02cd89b121f1173a0d56695b4c2269d8c83cd"
             _bins="latexdiff"
             _bins_js_array='"latexdiff"'
             _libs=""
@@ -268,12 +268,12 @@ download_binary_and_run_installer() {
             _updater_name=""
             _updater_bin=""
             ;;
-        "latexdiff-v1.4.0-x86_64-pc-windows-gnu.zip")
+        "latexdiff-v1.4.0-1-x86_64-pc-windows-gnu.zip")
             _arch="x86_64-pc-windows-gnu"
             _zip_ext=".zip"
             _zip_depth="0"
             _checksum_style="sha256"
-            _checksum_value="2346b5ddea331994783e5dd925bea86a018965b3fcd48ed41d6e19005bbcb0c1"
+            _checksum_value="dc858fc6d681f769c943381eddb655d34ae5779e79df511c7c08a0e97b7ada42"
             _bins="latexdiff.exe"
             _bins_js_array='"latexdiff.exe"'
             _libs=""
@@ -283,12 +283,12 @@ download_binary_and_run_installer() {
             _updater_name=""
             _updater_bin=""
             ;;
-        "latexdiff-v1.4.0-x86_64-unknown-linux-gnu.tar.gz")
+        "latexdiff-v1.4.0-1-x86_64-unknown-linux-gnu.tar.gz")
             _arch="x86_64-unknown-linux-gnu"
             _zip_ext=".tar.gz"
             _zip_depth="0"
             _checksum_style="sha256"
-            _checksum_value="ba24be850bdcae45b15aa50d565c39d2afed9a198b16bbfcefcc8b74f4b547f5"
+            _checksum_value="3a3603048057532d2c4ef64a05beec7b3ec10d7090335cf5d164c8312c91ac0f"
             _bins="latexdiff"
             _bins_js_array='"latexdiff"'
             _libs=""
@@ -518,26 +518,26 @@ select_archive_for_arch() {
     # accepting the first one that matches, as it's the best match
     case "$_true_arch" in 
         "aarch64-apple-darwin")
-            _archive="latexdiff-v1.4.0-aarch64-apple-darwin.tar.gz"
+            _archive="latexdiff-v1.4.0-1-aarch64-apple-darwin.tar.gz"
             if [ -n "$_archive" ]; then
                 echo "$_archive"
                 return 0
             fi
-            _archive="latexdiff-v1.4.0-x86_64-apple-darwin.tar.gz"
+            _archive="latexdiff-v1.4.0-1-x86_64-apple-darwin.tar.gz"
             if [ -n "$_archive" ]; then
                 echo "$_archive"
                 return 0
             fi
             ;;
         "aarch64-pc-windows-gnu")
-            _archive="latexdiff-v1.4.0-x86_64-pc-windows-gnu.zip"
+            _archive="latexdiff-v1.4.0-1-x86_64-pc-windows-gnu.zip"
             if [ -n "$_archive" ]; then
                 echo "$_archive"
                 return 0
             fi
             ;;
         "aarch64-unknown-linux-gnu")
-            _archive="latexdiff-v1.4.0-aarch64-unknown-linux-gnu.tar.gz"
+            _archive="latexdiff-v1.4.0-1-aarch64-unknown-linux-gnu.tar.gz"
             if ! check_glibc "2" "35"; then
                 _archive=""
             fi
@@ -547,21 +547,21 @@ select_archive_for_arch() {
             fi
             ;;
         "x86_64-apple-darwin")
-            _archive="latexdiff-v1.4.0-x86_64-apple-darwin.tar.gz"
+            _archive="latexdiff-v1.4.0-1-x86_64-apple-darwin.tar.gz"
             if [ -n "$_archive" ]; then
                 echo "$_archive"
                 return 0
             fi
             ;;
         "x86_64-pc-windows-gnu")
-            _archive="latexdiff-v1.4.0-x86_64-pc-windows-gnu.zip"
+            _archive="latexdiff-v1.4.0-1-x86_64-pc-windows-gnu.zip"
             if [ -n "$_archive" ]; then
                 echo "$_archive"
                 return 0
             fi
             ;;
         "x86_64-unknown-linux-gnu")
-            _archive="latexdiff-v1.4.0-x86_64-unknown-linux-gnu.tar.gz"
+            _archive="latexdiff-v1.4.0-1-x86_64-unknown-linux-gnu.tar.gz"
             if ! check_glibc "2" "35"; then
                 _archive=""
             fi

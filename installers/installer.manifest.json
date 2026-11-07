@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/hethon/ingen/v0.4.0/schema/manifest.schema.json",
   "app_name": "latexdiff",
-  "app_version": "1.4.0",
+  "app_version": "1.4.0-1",
   "owner": "hethon",
   "repo": "latexdiff-bin",
   "tag": "v{app_version}",
@@ -31,27 +31,27 @@
     {
       "id": "latexdiff-v{app_version}-aarch64-apple-darwin.tar.gz",
       "target": "aarch64-apple-darwin",
-      "checksum": "sha256:aa6c3334d71b4b9fefef3aeee8ad5ad5dac6b3c80cbaaa6c7b0d1d620320a6cb"
+      "checksum": "sha256:f472e63612a8c6f0857ac1ffe9db95c7d585d83320e288f96efeb221c58dac4f"
     },
     {
       "id": "latexdiff-v{app_version}-aarch64-unknown-linux-gnu.tar.gz",
       "target": "aarch64-unknown-linux-gnu",
-      "checksum": "sha256:fd52e477765b5c73f37c3f314150c4c8686de364aa0cdfdb638657d9290d979a"
+      "checksum": "sha256:103e1438d5424e6c258429d2966493cb6c85475160792bfc7f17c83d44c3d141"
     },
     {
       "id": "latexdiff-v{app_version}-x86_64-apple-darwin.tar.gz",
       "target": "x86_64-apple-darwin",
-      "checksum": "sha256:6aca46dbeaf6cd514e95f34019734c461eb2b88d9a7201d725d71efaae7e291e"
+      "checksum": "sha256:e6c337d0b752b02ed439bea992b02cd89b121f1173a0d56695b4c2269d8c83cd"
     },
     {
       "id": "latexdiff-v{app_version}-x86_64-pc-windows-gnu.zip",
       "target": "x86_64-pc-windows-gnu",
-      "checksum": "sha256:2346b5ddea331994783e5dd925bea86a018965b3fcd48ed41d6e19005bbcb0c1"
+      "checksum": "sha256:dc858fc6d681f769c943381eddb655d34ae5779e79df511c7c08a0e97b7ada42"
     },
     {
       "id": "latexdiff-v{app_version}-x86_64-unknown-linux-gnu.tar.gz",
       "target": "x86_64-unknown-linux-gnu",
-      "checksum": "sha256:ba24be850bdcae45b15aa50d565c39d2afed9a198b16bbfcefcc8b74f4b547f5"
+      "checksum": "sha256:3a3603048057532d2c4ef64a05beec7b3ec10d7090335cf5d164c8312c91ac0f"
     }
   ]
 }

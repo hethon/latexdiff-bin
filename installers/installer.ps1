@@ -6,12 +6,12 @@
 <#
 .SYNOPSIS
 
-The installer for latexdiff 1.4.0
+The installer for latexdiff 1.4.0-1
 
 .DESCRIPTION
 
 This script detects what platform you're on and fetches an appropriate archive from
-https://github.com/hethon/latexdiff-bin/releases/download/v1.4.0
+https://github.com/hethon/latexdiff-bin/releases/download/v1.4.0-1
 then unpacks the binaries and installs them to
 
     $HOME/.local/bin
@@ -34,25 +34,25 @@ param (
 )
 
 $app_name = 'latexdiff'
-$app_version = '1.4.0'
+$app_version = '1.4.0-1'
 if ($env:LATEXDIFF_DOWNLOAD_URL) {
   $ArtifactDownloadUrls = @($env:LATEXDIFF_DOWNLOAD_URL)
 } elseif ($env:INSTALLER_DOWNLOAD_URL) {
   $ArtifactDownloadUrls = @($env:INSTALLER_DOWNLOAD_URL)
 } elseif ($env:LATEXDIFF_INSTALLER_GHE_BASE_URL) {
   $installer_base_url = $env:LATEXDIFF_INSTALLER_GHE_BASE_URL
-  $ArtifactDownloadUrls = @("$installer_base_url/hethon/latexdiff-bin/releases/download/v1.4.0")
+  $ArtifactDownloadUrls = @("$installer_base_url/hethon/latexdiff-bin/releases/download/v1.4.0-1")
 } elseif ($env:LATEXDIFF_INSTALLER_GITHUB_BASE_URL) {
   $installer_base_url = $env:LATEXDIFF_INSTALLER_GITHUB_BASE_URL
-  $ArtifactDownloadUrls = @("$installer_base_url/hethon/latexdiff-bin/releases/download/v1.4.0")
+  $ArtifactDownloadUrls = @("$installer_base_url/hethon/latexdiff-bin/releases/download/v1.4.0-1")
 } else {
-  $ArtifactDownloadUrls = @("https://github.com/hethon/latexdiff-bin/releases/download/v1.4.0")
+  $ArtifactDownloadUrls = @("https://github.com/hethon/latexdiff-bin/releases/download/v1.4.0-1")
 }
 
 $auth_token = $env:LATEXDIFF_GITHUB_TOKEN
 
 $receipt = @"
-{"binaries":["CARGO_DIST_BINS"],"binary_aliases":{},"cdylibs":["CARGO_DIST_DYLIBS"],"cstaticlibs":["CARGO_DIST_STATICLIBS"],"install_layout":"unspecified","install_prefix":"AXO_INSTALL_PREFIX","modify_path":true,"provider":{"source":"ingen","version":"0.4.0"},"source":{"app_name":"latexdiff","name":"latexdiff-bin","owner":"hethon","release_type":"github"},"version":"1.4.0"}
+{"binaries":["CARGO_DIST_BINS"],"binary_aliases":{},"cdylibs":["CARGO_DIST_DYLIBS"],"cstaticlibs":["CARGO_DIST_STATICLIBS"],"install_layout":"unspecified","install_prefix":"AXO_INSTALL_PREFIX","modify_path":true,"provider":{"source":"ingen","version":"0.4.0"},"source":{"app_name":"latexdiff","name":"latexdiff-bin","owner":"hethon","release_type":"github"},"version":"1.4.0-1"}
 "@
 if ($env:XDG_CONFIG_HOME) {
   $receipt_home = "${env:XDG_CONFIG_HOME}\latexdiff"
@@ -92,7 +92,7 @@ function Install-Binary($install_args) {
   # Platform info injected by dist
   $platforms = @{
     "aarch64-pc-windows-gnu" = @{
-      "artifact_name" = "latexdiff-v1.4.0-x86_64-pc-windows-gnu.zip"
+      "artifact_name" = "latexdiff-v1.4.0-1-x86_64-pc-windows-gnu.zip"
       "bins" = @("latexdiff.exe")
       "libs" = @()
       "staticlibs" = @()
@@ -103,7 +103,7 @@ function Install-Binary($install_args) {
       "aliases_json" = '{}'
     }
     "x86_64-pc-windows-gnu" = @{
-      "artifact_name" = "latexdiff-v1.4.0-x86_64-pc-windows-gnu.zip"
+      "artifact_name" = "latexdiff-v1.4.0-1-x86_64-pc-windows-gnu.zip"
       "bins" = @("latexdiff.exe")
       "libs" = @()
       "staticlibs" = @()
