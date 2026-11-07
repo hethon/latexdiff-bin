@@ -14,7 +14,20 @@ curl --proto '=https' --tlsv1.2 -LsSf https://raw.githubusercontent.com/hethon/l
 powershell -ExecutionPolicy Bypass -c "irm https://raw.githubusercontent.com/hethon/latexdiff-bin/installers/installer.ps1 | iex
 ```
 
-Or download an archive from the [releases page](https://github.com/hethon/latexdiff-bin/releases).
+> [!NOTE]
+> The install scripts are generated with [ingen](https://github.com/hethon/ingen). They download the build for your platform from this repo's [releases](../../releases), verify its checksum, and install it to `$HOME/.local/bin`. You can read the scripts in the [`installers`](../installers) folder.
+
+Then use it like this:
+
+```bash
+latexdiff old.tex new.tex > diff.tex
+```
+
+Compile the diff:
+
+```bash
+tectonic diff.tex
+```
 
 ## Supported Platforms
 
