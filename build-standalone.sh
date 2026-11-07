@@ -30,6 +30,13 @@ mkdir -p "$OUT_DIR"
 awk '/use Algorithm::Diff qw\(traverse_sequences\);/ { system("cat Algorithm-Diff-Block"); next } { print }' \
   latexdiff | grep -v '^###' > "$WORK_DIR/latexdiff-so"
 
+# Always enable mark-up in verbatim environments, so latexdiff never calls kpsewhich.
+PATTERN='if ( defined( $packages{"listings"} ) or `kpsewhich listings.sty` ne "" ) {'
+grep -qF -- "$PATTERN" "$WORK_DIR/latexdiff-so" || { echo "listings patch: pattern not found" >&2; exit 1; }
+sed 's/if ( defined( $packages{"listings"} ) or `kpsewhich listings\.sty` ne "" ) {/if ( 1 ) {/' \
+  "$WORK_DIR/latexdiff-so" > "$WORK_DIR/latexdiff-so.patched"
+mv "$WORK_DIR/latexdiff-so.patched" "$WORK_DIR/latexdiff-so"
+
 # Insert par-prelude.pl after the shebang line, so DATA is reopened inside the packed binary.
 {
   head -n 1 "$WORK_DIR/latexdiff-so"
@@ -50,8 +57,12 @@ BIN="$PWD/$OUT_DIR/latexdiff${EXEEXT}"
   cd "$WORK_DIR"
   printf '\\documentclass{article}\n\\begin{document}\nHello\n\\end{document}\n' > a.tex
   printf '\\documentclass{article}\n\\begin{document}\nHello world\n\\end{document}\n' > b.tex
-  "$BIN" a.tex b.tex > diff.tex 2>/dev/null
+  if err=$("$BIN" a.tex b.tex 2>&1 >diff.tex) && [ -n "$err" ]; then
+      echo -e "Smoke test failed: unexpected stderr output:\n$err" >&2
+      exit 1
+  fi
   grep -q 'DIFadd' diff.tex || { echo "Smoke test failed: no DIFadd in output" >&2; exit 1; }
+  grep -q 'lstnewenvironment' diff.tex || { echo "Smoke test failed: listings preamble missing" >&2; exit 1; }
 )
 echo "Smoke test passed"
 

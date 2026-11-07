@@ -26,8 +26,8 @@ Linux (x86_64, aarch64), macOS (Intel, Apple Silicon), Windows (x86_64).
 
 ## Notes
 
-- These builds track stable upstream releases only.
-- `latexdiff` uses `kpsewhich` to check which LaTeX packages are installed. If you don't have it (likely if you use Tectonic), you'll see a harmless warning, and some optional features, like mark-up inside verbatim environments, are turned off. The diff itself works normally.
+- These builds track upstream releases starting from version 1.4.0.
+- The generated diff file always loads `listings`, so changes inside verbatim environments are shown. Compiling the diff file requires `listings` to be available (Tectonic fetches it automatically).
 - This repo is a thin packaging layer. The `latexdiff` source is upstream's, unmodified. Bugs in `latexdiff` itself belong [upstream](https://github.com/ftilmann/latexdiff/issues).
 
 Upstream README: https://github.com/hethon/latexdiff-bin/blob/master/README.md
