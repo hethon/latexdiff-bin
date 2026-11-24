@@ -70,6 +70,8 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v7.0.1
+
       - uses: actions/download-artifact@v8.0.2
         with:
           path: dist
@@ -81,3 +83,24 @@ jobs:
         with:
           files: dist/*
           generate_release_notes: true
+
+      - name: Generate installers
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          npx --yes ingen-cli@0.4.1 sync installer.manifest.json --app-version "${GITHUB_REF_NAME#v}"
+          npx --yes ingen-cli@0.4.1 generate installer.manifest.json installers
+          ls installers
+
+      - name: Test installer
+        run: |
+          set -euo pipefail
+          LATEXDIFF_UNMANAGED_INSTALL="$RUNNER_TEMP/bin" sh installers/installer.sh
+          "$RUNNER_TEMP/bin/latexdiff" --version
+
+      - name: Upload installers
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release upload "$GITHUB_REF_NAME" installers/* --clobber

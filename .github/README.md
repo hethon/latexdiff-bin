@@ -6,16 +6,16 @@ Unofficial prebuilt binaries of [latexdiff](https://github.com/ftilmann/latexdif
 
 **Linux / macOS:**
 ```bash
-curl --proto '=https' --tlsv1.2 -LsSf https://raw.githubusercontent.com/hethon/latexdiff-bin/master/installers/installer.sh | sh
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/hethon/latexdiff-bin/releases/latest/download/installer.sh | sh
 ```
 
 **Windows (PowerShell):**
 ```powershell
-powershell -ExecutionPolicy Bypass -c "irm https://raw.githubusercontent.com/hethon/latexdiff-bin/installers/installer.ps1 | iex
+powershell -ExecutionPolicy Bypass -c "irm https://github.com/hethon/latexdiff-bin/releases/latest/download/installer.ps1 | iex
 ```
 
 > [!NOTE]
-> The install scripts are generated with [ingen](https://github.com/hethon/ingen). They download the build for your platform from this repo's [releases](../../releases), verify its checksum, and install it to `$HOME/.local/bin`. You can read the scripts in the [`installers`](../installers) folder.
+> The install scripts are generated with [ingen](https://github.com/hethon/ingen). They download the build for your platform from this repo's [releases](../../releases), verify its checksum, and install it to `$HOME/.local/bin`. The scripts are attached to every release.
 
 Then use it like this:
 

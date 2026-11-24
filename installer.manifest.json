@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/hethon/ingen/v0.4.0/schema/manifest.schema.json",
   "app_name": "latexdiff",
-  "app_version": "1.4.0-1",
+  "app_version": "0.0.0-0",
   "owner": "hethon",
   "repo": "latexdiff-bin",
   "tag": "v{app_version}",
